@@ -1,0 +1,527 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+
+body{
+    background-color: #1B6436;
+}
+
+.input-container p{
+  margin-top: 15px;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  font-style: italic;
+}
+
+.set {
+    display: block;
+    margin-bottom: 20px;
+    margin-left: 1px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.venn-diagram {
+    display: flex;
+    justify-content: center;
+    margin-top: -1680px; /* Adjust the margin-top value to your desired position */
+    margin-left: 550px;
+    margin-right: auto;
+}
+
+.operation-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+.container {
+    position: relative;
+    background-color: #396C34;
+    height: 550px;
+    width: 630px;
+    border-radius: 15px;
+    box-shadow: 7px 7px  rgba(0,0,0,0.1); 
+}
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    margin-top: 15px;
+    margin-left: -15px;
+}
+.circle1 {
+    width: 270px;
+    height: 270px;
+    border: 3px solid #D6D271;
+    top: 50px;
+    left: 90px;
+}
+.circle2 {
+    width: 270px;
+    height: 270px;
+    border: 3px solid #DAA94A;
+    top: 50px;
+    left: 290px;
+}
+
+.circle3 {
+    width: 270px;
+    height: 270px;
+    border: 3px solid #9EBA6D;
+    top: 190px;
+    left: 200px;
+}
+
+.position-adjust{
+    margin-left: 50px;
+}
+
+.input-container{
+    background-color: #268047;
+    height: 310px;
+    width: 420px;
+    border-radius: 15px;
+    padding: 30px;
+    margin-left: 30px;
+    margin-top: 30px;
+    box-shadow: 7px 7px  rgba(0,0,0,0.1); 
+}
+
+.input-container h1{
+    font-size: 35px;
+    color: #fff;
+}
+
+.head{
+    font-size: 30px;
+    color: #fff;
+    font-weight: bold;
+}
+
+#setA {
+    background-color: #C1C684;
+    width: 330px; /* Change the width to 200px */
+    height: 30px; /* Change the height to 30px */
+    border: none;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+
+  #setA::placeholder {
+    color: #000; /* Change the color of the placeholder text to blue */
+    padding-left: 10px;
+  }
+  
+  
+#setB {
+    background-color: #C1C684;
+    width: 328px; /* Change the width to 200px */
+    height: 30px; /* Change the height to 30px */
+    border: none;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+
+  #setB::placeholder {
+    color: #000; /* Change the color of the placeholder text to blue */
+    padding-left: 10px;
+  }
+
+  #setC {
+    background-color: #C1C684;
+    width: 328px; /* Change the width to 200px */
+    height: 30px; /* Change the height to 30px */
+    border: none;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+
+  #setC::placeholder {
+    color: #000; /* Change the color of the placeholder text to blue */
+    padding-left: 10px;
+  }
+
+  button{
+    background-color: #9EBA6D;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 170px;
+    color: #fff;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-top: 10px;
+    margin-left: 120px;
+  }
+
+  .reset{
+    background-color: #9EBA6D;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 130px;
+    color: #fff;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-top: 10px;
+    margin-left: 15px;
+  }
+  
+
+
+  button:hover{
+    background-color: #DAA94A;
+  }
+
+  .back-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 40px;
+    background-color: #DAA94A;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 30px;
+    transition: 0.3s;
+  }
+
+  .back-button:hover{
+    background-color: #D6D271;
+  }
+
+  a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  a:hover{
+    color: #1B6436;
+  }
+
+  .operation-container{
+    background-color: #268047;
+    height: 1190px;
+    width: 420px;
+    border-radius: 15px;
+    padding: 30px;
+    margin-left: 30px;
+    margin-top: 30px;
+    box-shadow: 7px 7px  rgba(0,0,0,0.1); 
+  }
+
+  .operation-container h1{
+    font-size: 25px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.set {
+    width: 405px;
+    height: 100px;
+    margin-bottom: 10px;
+    background-color: #C1C684;
+    border: none;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  .operation-title {
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .result {
+    padding: 5px;
+  }
+
+ 
+  #union{
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  #intersectionAB{
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  #intersectionAB{
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  
+  #intersectionAC{
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  #intersectionBC{
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  #intersectionAll{
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  #differenceAB{
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  #differenceAC{
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  #differenceBC{
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  #differenceBA{
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  #differenceCA{
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  #differenceCB{
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  #complementA{
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  #complementB{
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  #complementC{
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .vertical-line {
+    width: 3px; /* Adjust the width of the line as needed */
+    height: 1700px; /* Adjust the height of the line as needed */
+    background-color: #fff; /* Set the color of the line */
+    margin-left: 550px;
+    margin-top: -1670px;
+  }
+
+  .circle1 p {
+    position: absolute;
+    left: 80px;
+    top: 80px;
+  }
+  
+  .circle2 p {
+    position: absolute;
+    left: 150px;
+    top: 80px;
+  }
+  
+  .circle3 p {
+    position: absolute;
+    left: 130px;
+    top: 130px;
+  }
+  
+  .intAB p {
+    position: absolute;
+    left: 260px;
+    top: 125px;
+  }
+  
+  .intAC p {
+    position: absolute;
+    left: 180px;
+    top: 250px;
+  }
+  
+  .intBC p {
+    position: absolute;
+    left: 330px;
+    top: 230px;
+  }
+  
+  .intABC p {
+    position: absolute;
+    left: 270px;
+    top: 210px;
+  }
+
+  
+
+
+
+ 
+  
+
+
+  .headA {
+    margin-top: 50px;
+    position: relative;
+    z-index: 1; /* Add z-index to bring the element to the front */
+  }
+  
+  .headA h1 {
+    position: absolute;
+    top: -580px;
+    left: 760px;
+    color: #fff;
+  }
+
+  .headB {
+    margin-top: 50px;
+    position: relative;
+    z-index: 1; /* Add z-index to bring the element to the front */
+  }
+  
+  .headB h1 {
+    position: absolute;
+    top: -580px;
+    left: 980px;
+    color: #fff;
+  }
+
+  .headC {
+    margin-top: 50px;
+    position: relative;
+    z-index: 1; /* Add z-index to bring the element to the front */
+  }
+  
+  .headC h1 {
+    position: absolute;
+    top: -110px;
+    left: 880px;
+    color: #fff;
+  }
+
+  
+  .footer__copyright {
+    background: #2a4f26;
+    padding: 20px 0;
+    margin-top: 1160px;
+}
+
+.footer__copyright h6 {
+    font-size: 1.3rem;
+    color: #fff;
+}
+
+em{
+    color: #D7D372;
+}
+
+.close-button {
+  /* Styles for the close button */
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  display: inline-block;
+  padding: 0;
+  cursor: pointer;
+}
+
+.close-icon {
+  /* Styles for the "x" icon */
+  display: block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 35px;
+  border-radius: 50%;
+  background-color: #C1C684;
+  color: #000;
+}
+
+
+.custom-alert {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #268047;
+  padding: 60px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  text-align: center;
+  font-size: 35px;
+  height: 200px;
+  width: 330px;
+}
+
+
+.backdrop {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(98, 98, 98, 0.5);
+backdrop-filter: blur(5px);
+z-index: 9998;
+pointer-events: none;
+}
+
+
+.highlight {
+color: #DAA94A; /* Change the color to your desired value */
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  

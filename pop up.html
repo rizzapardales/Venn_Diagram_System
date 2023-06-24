@@ -1,0 +1,122 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Set Input</title>
+  <style>
+    .modal-content {
+      background-color: #fff;
+      width: 400px;
+      padding: 20px;
+      text-align: center;
+      margin: 0 auto;
+      margin-top: 50px;
+      position: relative;
+    }
+
+    .set-input {
+      margin-bottom: 10px;
+    }
+
+    .set-input input {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      width: 100%;
+      padding: 5px;
+      box-sizing: border-box;
+    }
+
+    .close-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    button {
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="modal-content">
+    <h2>Input Sets</h2>
+    <p>Enter 6 numbers or 3 words for each set:</p>
+    <form id="inputForm">
+      <div class="set-input">
+        <label for="set1">Set 1:</label>
+        <input type="text" id="set1" required>
+      </div>
+      <div class="set-input">
+        <label for="set2">Set 2:</label>
+        <input type="text" id="set2" required>
+      </div>
+      <button type="submit" id="submitBtn">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const inputForm = document.getElementById('inputForm');
+    const submitBtn = document.getElementById('submitBtn');
+
+    inputForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const set1Input = document.getElementById('set1');
+      const set2Input = document.getElementById('set2');
+
+      const set1Values = set1Input.value.trim().split(' ');
+      const set2Values = set2Input.value.trim().split(' ');
+
+      if (set1Values.length > 6 || set2Values.length > 6) {
+        showCenteredAlert('Please enter exactly 6 numbers for each set.');
+        return;
+      }
+
+      if (set1Values.length > 3 || set2Values.length > 3) {
+        showCenteredAlert('Please enter exactly 3 words for each set.');
+        return;
+      }
+
+      // Process the input values here
+      console.log('Set 1:', set1Values);
+      console.log('Set 2:', set2Values);
+
+      // Reset the form
+      inputForm.reset();
+    });
+
+    function showCenteredAlert(message) {
+      const tempDiv = document.createElement('div');
+      tempDiv.classList.add('modal-content');
+      tempDiv.innerHTML = `
+        <span class="close-icon" onclick="closePopup()">X</span>
+        <p>${message}</p>
+      `;
+
+      tempDiv.style.position = 'fixed';
+      tempDiv.style.top = '50%';
+      tempDiv.style.left = '50%';
+      tempDiv.style.transform = 'translate(-50%, -50%)';
+      tempDiv.style.backgroundColor = '#fff';
+      tempDiv.style.padding = '20px';
+      tempDiv.style.borderRadius = '4px';
+      tempDiv.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.3)';
+      tempDiv.style.zIndex = '9999';
+
+      document.body.appendChild(tempDiv);
+    }
+
+    function closePopup() {
+      const popup = document.querySelector('.modal-content:last-child');
+      if (popup) {
+        document.body.removeChild(popup);
+      }
+    }
+  </script>
+</body>
+</html>
+

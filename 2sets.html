@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VennVenture</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="tablogo.png" />
+</head>
+<body>
+    <div class="back-button">
+        <div class="back-circle"></div>
+        <a href="landingpage.html">Back</a>
+      </div>
+
+    <div class="input-container">
+        <h1>Input Sets</h1>
+        <p>Input elements with <span>space</span>.</p>
+        <br>
+        <label for="setA" class="head">Set A:</label>
+        <input type="text" id="setA" placeholder="Enter elements for Set A">
+        <br><br>
+        <label for="setB" class="head">Set B:</label>
+        <input type="text" id="setB" placeholder="Enter elements for Set B">
+        <br><br>
+        <button onclick="performSetOperations()">Generate</button>
+        <button class="reset" onclick="resetFields()">Reset</button>
+    </div>
+
+    
+    <div class="operation-container">
+        <h1>Set Operations:</h1>
+        <p class="operation-title">Union:</p>
+        <div id="union" class="set">
+          <div class="result"></div>
+        </div>
+
+        <p class="operation-title">Intersection:</p>
+        <div id="intersection" class="set">
+          <div class="result"></div>
+        </div>
+
+        <p class="operation-title">Difference A - B:</p>
+        <div id="differenceAB" class="set">
+          <div class="result"></div>
+        </div>
+
+        <p class="operation-title">Difference B - A:</p>
+        <div id="differenceBA" class="set">
+          <div class="result"></div>
+        </div>
+
+        <p class="operation-title">Complement A:</p>
+        <div id="complementA" class="set">
+          <div class="result"></div>
+        </div>
+
+        <p class="operation-title">Complement B:</p>
+        <div id="complementB" class="set">
+          <div class="result"></div>
+        </div>
+      </div>
+
+      <div class="vertical-line"></div>
+
+      
+    <!--venn diagram para sa union-->
+    <div id="vennDiagram" class="venn-diagram">
+        <div class="container">
+            <div class="circle circle1"></div>
+            <div class="circle circle2"></div>
+            <div class="overlap"></div>
+        </div>
+    </div>
+    <!--end-->
+
+    <!--venn diagram para sa intersection-->
+    <div id="vennDiagram-Intersection" class="vennDiagram-Intersection">
+        <div class="containerIntersection">
+            <div class="circle circle1-inter"></div>
+            <div class="circle circle2-inter"></div>
+            <div class="overlap-inter"></div>
+        </div>
+    </div>
+     <!--end-->
+
+    <!--venn diagram para sa difference A-B-->
+    <div id="vennDiagram-DifferenceAB" class="vennDiagram-DifferenceAB">
+        <div class="containerDifferenceAB">
+            <div class="circle circle1-diffAB"></div>
+            <div class="circle circle2-diffAB"></div>
+            <div class="overlap-diffAB"></div>
+        </div>
+    </div>
+     <!--end-->
+
+         <!--venn diagram para sa difference B-A-->
+    <div id="vennDiagram-DifferenceBA" class="vennDiagram-DifferenceBA">
+        <div class="containerDifferenceBA">
+            <div class="circle circle1-diffBA"></div>
+            <div class="circle circle2-diffBA"></div>
+            <div class="overlap-diffBA"></div>
+        </div>
+    </div>
+     <!--end-->
+
+    <!--venn diagram para sa complement A-->
+    <div id="vennDiagram-ComplementA" class="vennDiagram-ComplementA">
+        <div class="containerComplementA">
+            <div class="circle circle1-comA"></div>
+            <div class="circle circle2-comA"></div>
+            <div class="overlap-comA"></div>
+        </div>
+    </div>
+     <!--end-->
+
+    <!--venn diagram para sa complement B-->
+    <div id="vennDiagram-ComplementB" class="vennDiagram-ComplementB">
+        <div class="containerComplementB">
+            <div class="circle circle1-comB"></div>
+            <div class="circle circle2-comB"></div>
+            <div class="overlap-comB"></div>
+        </div>
+    </div>
+     <!--end-->
+
+     <div class="headunion"><h2>A U B</h2></div>
+     <div class="headunionA"><h2>A</h2></div>
+     <div class="headunionB"><h2>B</h2></div>
+
+     <div class="headintersection"><h2>A ∩ B</h2></div>
+     <div class="headintA"><h2>A</h2></div>
+     <div class="headintB"><h2>B</h2></div>
+
+     <div class="headdiffAB"><h2>A - B</h2></div>
+     <div class="headdiffA"><h2>A</h2></div>
+     <div class="headdiffB"><h2>B</h2></div>
+
+     <div class="headdiffBA"><h2>B - A</h2></div>
+     <div class="headdiffA1"><h2>A</h2></div>
+     <div class="headdiffB1"><h2>B</h2></div>
+
+     <div class="headcomplementA"><h2>A'</h2></div>
+     <div class="headcomA"><h2>A</h2></div>
+     <div class="headcomB"><h2>B</h2></div>
+
+     <div class="headcomplementB"><h2>B'</h2></div>
+     <div class="headcomB1"><h2>A</h2></div>
+     <div class="headcomB2"><h2>B</h2></div>
+
+
+     <footer>
+        <div class="footer__copyright">
+        <center><h6>Copyright &copy; 2023. Designed by <em>Group 6 BSIT 1-1</em></h6></center>
+        </div>
+        </footer>
+
+
+
+    <script>
+function performSetOperations() {
+    var setA = document.getElementById("setA").value.trim().split(" ");
+    var setB = document.getElementById("setB").value.trim().split(" ");
+
+    if (setA.length > 6 || setB.length > 6) {
+        showAlert("<p>Opps! You have exceeded the limit of  <span class='highlight'>6 numbers</span>. Please input <span class='highlight'>less than 6 numbers</span>.");
+        return;
+    }
+
+    var isNumberSetA = setA.every(function(value) {
+        return !isNaN(parseFloat(value)) && isFinite(value);
+    });
+
+    var isNumberSetB = setB.every(function(value) {
+        return !isNaN(parseFloat(value)) && isFinite(value);
+    });
+
+    if (!isNumberSetA && setA.length > 5) {
+        showAlert("Opps! You have exceeded the limit of  <span class='highlight'>5 words</span>. Please input <span class='highlight'>less than 5 words</span> in Set A");
+        return;
+    }
+
+    if (!isNumberSetB && setB.length > 5) {
+        showAlert("Opps! You have exceeded the limit of  <span class='highlight'>5 words</span>. Please input <span class='highlight'>less than 5 words</span> in Set B");
+        return;
+    }
+
+
+
+            var setA = document.getElementById("setA").value.trim().split(" ");
+            var setB = document.getElementById("setB").value.trim().split(" ");
+
+            var union = Array.from(new Set([...setA, ...setB]));
+            var intersection = setA.filter(value => setB.includes(value));
+            var differenceAB = setA.filter(value => !setB.includes(value));
+            var differenceBA = setB.filter(value => !setA.includes(value));
+            var complementA = setB.filter(value => !setA.includes(value));
+            var complementB = setA.filter(value => !setB.includes(value));
+
+           
+            var unionResult = document.getElementById("union").querySelector(".result");
+            unionResult.innerHTML = "<p>A ∪ B = {" + union.join(", ") + "}</p>";
+            unionResult.style.color = "black";
+
+            var intersectionResult = document.getElementById("intersection").querySelector(".result");
+            intersectionResult.innerHTML = "<p>A ∩ B = {" + (intersection.length > 0 ? intersection.join(", ") : "") + "}</p>";
+            intersectionResult.style.color = "black";
+
+            var differenceABResult = document.getElementById("differenceAB").querySelector(".result");
+            differenceABResult.innerHTML = "<p>A - B = {" + differenceAB.join(", ") + "}</p>";
+            differenceABResult.style.color = "black";
+
+            var differenceBAResult = document.getElementById("differenceBA").querySelector(".result");
+            differenceBAResult.innerHTML = "<p>B - A = {" + differenceBA.join(", ") + "}</p>";
+            differenceBAResult.style.color = "black";
+
+            var complementAResult = document.getElementById("complementA").querySelector(".result");
+            complementAResult.innerHTML = "<p>A' = {" + (complementA.length > 0 ? complementA.join(", ") : "") + "}</p>";
+            complementAResult.style.color = "black";
+
+            var complementBResult = document.getElementById("complementB").querySelector(".result");
+            complementBResult.innerHTML = "<p>B' = {" + (complementB.length > 0 ? complementB.join(", ") : "") + "}</p>";
+            complementBResult.style.color = "black";
+
+
+            //specify yung specific values na papalabasin sa venn diagram
+            generateVennDiagram(setA, setB, union, intersection); //union
+            generateVennDiagramIntersection(intersection); //intersection
+            generateVennDiagramDifferenceAB(setA, setB, differenceAB); //difference A-B
+            generateVennDiagramDifferenceBA(setA, setB, differenceBA); //difference B-A
+            generateVennDiagramComplementA(setA, setB, complementA); //complement A
+            generateVennDiagramComplementB(setA, setB, complementB); //complement B
+        }
+
+            //logic para sa union
+            function generateVennDiagram(setA, setB, union, intersection) {
+            var circle1 = document.querySelector('.circle1');
+            var circle2 = document.querySelector('.circle2');
+            var overlap = document.querySelector('.overlap');
+
+            var uniqueA = setA.filter(value => !setB.includes(value));
+            var uniqueB = setB.filter(value => !setA.includes(value));
+
+            circle1.innerHTML = "<span class='circle-label1'>" + uniqueA.join("</span><br><span class='circle-label1'>") + "</span>";
+            circle2.innerHTML = "<span class='circle-label2'>" + uniqueB.join("</span><br><span class='circle-label2'>") + "</span>";
+            overlap.innerHTML = "<span class='circle-label3'>" + intersection.join("</span><br><span class='circle-label3'>") + "</span>";
+        }
+        //end
+
+        //logic para sa intersection
+        function generateVennDiagramIntersection(intersection) {
+            var overlap = document.querySelector('.overlap-inter');
+
+            overlap.innerHTML = "<span class='circle-label3'>" + intersection.join("</span><br><span class='circle-label3'>") + "</span>";
+        }
+        //end
+
+        //logic para sa difference A-B
+        function generateVennDiagramDifferenceAB(setA, setB, differenceAB) {
+            var circle1 = document.querySelector('.circle1-diffAB');
+
+            var uniqueA = setA.filter(value => !setB.includes(value));
+
+            circle1.innerHTML = "<span class='circle-label1'>" + uniqueA.join("</span><br><span class='circle-label1'>") + "</span>";
+        }
+
+        //logic para sa difference B-A
+        function generateVennDiagramDifferenceBA(setA, setB, differenceBA) {
+            var circle2 = document.querySelector('.circle2-diffBA');
+
+            var uniqueB = setB.filter(value => !setA.includes(value));
+
+            circle2.innerHTML = "<span class='circle-label2'>" + uniqueB.join("</span><br><span class='circle-label2'>") + "</span>";
+        }
+
+        //logic para sa complement A
+        function generateVennDiagramComplementA(setA, setB, complementA) {
+            var circle2 = document.querySelector('.circle2-comA');
+
+            var uniqueB = setB.filter(value => !setA.includes(value));
+
+            circle2.innerHTML = "<span class='circle-label2'>" + uniqueB.join("</span><br><span class='circle-label2'>") + "</span>";
+        }
+
+        //logic para sa complement B
+        function generateVennDiagramComplementB(setA, setB, complementB) {
+            var circle1 = document.querySelector('.circle1-comB');
+
+            var uniqueA = setA.filter(value => !setB.includes(value));
+
+            circle1.innerHTML = "<span class='circle-label1'>" + uniqueA.join("</span><br><span class='circle-label1'>") + "</span>";
+        }
+
+        function showAlert(message) {
+        var alertBox = document.createElement("div");
+        alertBox.classList.add("custom-alert");
+
+        var messageElement = document.createElement("span");
+        messageElement.innerHTML = message;
+        messageElement.style.color = "white";
+        messageElement.style.fontWeight = "bold"; // Set fontWeight to "bold"
+        alertBox.appendChild(messageElement);
+
+        var closeButton = document.createElement("span");
+        closeButton.classList.add("close-button");
+        closeButton.innerHTML = '<span class="close-icon">&#215;</span>'; // Add a span for the "x" icon
+        alertBox.appendChild(closeButton);
+
+        document.body.appendChild(alertBox);
+
+        var backdrop = document.createElement("div");
+        backdrop.classList.add("backdrop");
+        document.body.appendChild(backdrop);
+
+        closeButton.addEventListener("click", function() {
+            document.body.removeChild(alertBox);
+            document.body.removeChild(backdrop);
+        });
+    }
+
+    function resetFields() {
+  document.getElementById("setA").value = "";
+  document.getElementById("setB").value = "";
+  document.getElementById("union").querySelector(".result").innerHTML = "";
+  document.getElementById("intersection").querySelector(".result").innerHTML = "";
+  document.getElementById("differenceAB").querySelector(".result").innerHTML = "";
+  document.getElementById("differenceBA").querySelector(".result").innerHTML = "";
+  document.getElementById("complementA").querySelector(".result").innerHTML = "";
+  document.getElementById("complementB").querySelector(".result").innerHTML = "";
+
+  // Remove the numbers in the Venn diagram
+  var circleLabels = document.querySelectorAll(".circle-label1, .circle-label2, .circle-label3");
+  circleLabels.forEach(function(label) {
+    label.innerHTML = "";
+  });
+}
+
+
+
+
+
+
+
+
+
+        
+
+
+    </script>
+</body>
+</html>

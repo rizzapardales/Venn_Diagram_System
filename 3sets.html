@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VennVenture</title>
+    <link rel="stylesheet" href="3set-style.css">
+    <link rel="icon" href="tablogo.png" />
+</head>
+<body>
+    <div class="back-button">
+        <div class="back-circle"></div>
+        <a href="landingpage.html">Back</a>
+      </div>
+
+    <div class="input-container">
+        <h1>Input Sets</h1>
+        <p>Input elements with space.</p>
+        <br>
+        <label for="setA" class="head">Set A:</label>
+        <input type="text" id="setA" placeholder="Enter elements for Set A">
+        <br><br>
+        <label for="setB" class="head">Set B:</label>
+        <input type="text" id="setB" placeholder="Enter elements for Set B">
+        <br><br>
+        <label for="setC" class="head">Set C:</label>
+        <input type="text" id="setC" placeholder="Enter elements for Set C">
+        <br><br>
+        <button onclick="performSetOperations()">Generate</button>
+        <button class="reset" onclick="resetFields()">Reset</button>
+    </div>
+    
+    
+    <div class="operation-container">
+        <h1>Set Operations:</h1>
+        <p class="operation-title">Union:</p>
+        <div id="union" class="set">
+            <div class="result"></div>
+        </div>
+    
+        <p class="operation-title">Intersection A and B:</p>
+        <div id="intersectionAB" class="set">
+            <div class="result"></div>
+        </div>
+    
+        <p class="operation-title">Intersection A and C:</p>
+        <div id="intersectionAC" class="set">
+            <div class="result"></div>
+        </div>
+    
+        <p class="operation-title">Intersection B and C:</p>
+        <div id="intersectionBC" class="set">
+            <div class="result"></div>
+        </div>
+    
+        <p class="operation-title">Intersection of all sets:</p>
+        <div id="intersectionAll" class="set">
+            <div class="result"></div>
+        </div>
+    
+        <p class="operation-title">Difference A - B:</p>
+        <div id="differenceAB" class="set">
+            <div class="result"></div>
+        </div>
+    
+        <p class="operation-title">Difference A - C:</p>
+        <div id="differenceAC" class="set">
+            <div class="result"></div>
+        </div>
+    
+        <p class="operation-title">Difference B - C:</p>
+        <div id="differenceBC" class="set">
+            <div class="result"></div>
+        </div>
+    
+        <p class="operation-title">Difference B - A:</p>
+        <div id="differenceBA" class="set">
+            <div class="result"></div>
+        </div>
+    
+        <p class="operation-title">Difference C - A:</p>
+        <div id="differenceCA" class="set">
+            <div class="result"></div>
+        </div>
+    
+        <p class="operation-title">Difference C - B:</p>
+        <div id="differenceCB" class="set">
+            <div class="result"></div>
+        </div>
+    
+        <p class="operation-title">Complement A:</p>
+        <div id="complementA" class="set">
+            <div class="result"></div>
+        </div>
+    
+        <p class="operation-title">Complement B:</p>
+        <div id="complementB" class="set">
+            <div class="result"></div>
+        </div>
+    
+        <p class="operation-title">Complement C:</p>
+        <div id="complementC" class="set">
+            <div class="result"></div>
+        </div>
+    </div>
+
+      <div class="vertical-line"></div>
+
+    <div id="vennDiagram" class="venn-diagram">
+        <div class="container">
+            <div class="circle circle1"></div>
+            <div class="circle circle2"></div>
+            <div class="circle circle3"></div>
+            <div class="intAB"></div>
+            <div class="intAC"></div>
+            <div class="intBC"></div>
+            <div class="intABC"></div>
+        </div>
+    </div>
+
+    <div class="headA"><h1>A</h1></div>
+    <div class="headB"><h1>B</h1></div>
+    <div class="headC"><h1>C</h1></div>
+
+    <footer>
+        <div class="footer__copyright">
+        <center><h6>Copyright &copy; 2023. Designed by <em>Group 6 BSIT 1-1</em></h6></center>
+        </div>
+        </footer>
+
+  
+
+    <script>
+        function performSetOperations() {
+    var setA = document.getElementById("setA").value.trim().split(" ");
+    var setB = document.getElementById("setB").value.trim().split(" ");
+    var setC = document.getElementById("setC").value.trim().split(" ");
+
+    if (setA.length > 6 || setB.length > 6 || setC.length > 6) {
+        showAlert("<p>Oops! You have exceeded the limit of <span class='highlight'>6 numbers</span>. Please input <span class='highlight'>less than 6 numbers</span>.");
+        return;
+    }
+
+    var isNumberSetA = setA.every(function(value) {
+        return !isNaN(parseFloat(value)) && isFinite(value);
+    });
+
+    var isNumberSetB = setB.every(function(value) {
+        return !isNaN(parseFloat(value)) && isFinite(value);
+    });
+
+    var isNumberSetC = setC.every(function(value) {
+        return !isNaN(parseFloat(value)) && isFinite(value);
+    });
+
+    if (!isNumberSetA && setA.length > 5) {
+        showAlert("Oops! You have exceeded the limit of <span class='highlight'>5 words</span> for Set A. Please input <span class='highlight'>less than 5 words</span>.");
+        return;
+    }
+
+    if (!isNumberSetB && setB.length > 5) {
+        showAlert("Oops! You have exceeded the limit of <span class='highlight'>5 words</span> for Set B. Please input <span class='highlight'>less than 5 words</span>.");
+        return;
+    }
+
+    if (!isNumberSetC && setC.length > 5) {
+        showAlert("Oops! You have exceeded the limit of <span class='highlight'>5 words</span> for Set C. Please input <span class='highlight'>less than 5 words</span>.");
+        return;
+    }
+
+    var setA = document.getElementById("setA").value.trim().split(" ");
+    var setB = document.getElementById("setB").value.trim().split(" ");
+    var setC = document.getElementById("setC").value.trim().split(" ");
+
+    var union = Array.from(new Set([...setA, ...setB, ...setC]));
+    var intersectionAB = setA.filter(value => setB.includes(value));
+    var intersectionAC = setA.filter(value => setC.includes(value));
+    var intersectionBC = setB.filter(value => setC.includes(value));
+    var intersectionAll = setA.filter(value => setB.includes(value) && setC.includes(value));
+    var differenceAB = setA.filter(value => !setB.includes(value));
+    var differenceAC = setA.filter(value => !setC.includes(value));
+    var differenceBC = setB.filter(value => !setC.includes(value));
+    var differenceBA = setB.filter(value => !setA.includes(value));
+    var differenceCA = setC.filter(value => !setA.includes(value));
+    var differenceCB = setC.filter(value => !setB.includes(value));
+    var complementA = setB.concat(setC).filter(value => !setA.includes(value));
+    var complementB = setA.concat(setC).filter(value => !setB.includes(value));
+    var complementC = setA.concat(setB).filter(value => !setC.includes(value));
+
+    var unionResult = document.getElementById("union").querySelector(".result");
+    unionResult.innerHTML = "<p>A ∪ B ∪ C = {" + union.join(", ") + "}</p>";
+    unionResult.style.color = "black";
+
+    var intersectionABResult = document.getElementById("intersectionAB").querySelector(".result");
+    intersectionABResult.innerHTML = "<p>A ∩ B = {" + (intersectionAB.length > 0 ? intersectionAB.join(", ") : "") + "}</p>";
+    intersectionABResult.style.color = "black";
+
+    var intersectionACResult = document.getElementById("intersectionAC").querySelector(".result");
+    intersectionACResult.innerHTML = "<p>A ∩ C = {" + (intersectionAC.length > 0 ? intersectionAC.join(", ") : "") + "}</p>";
+    intersectionACResult.style.color = "black";
+
+    var intersectionBCResult = document.getElementById("intersectionBC").querySelector(".result");
+    intersectionBCResult.innerHTML = "<p>B ∩ C = {" + (intersectionBC.length > 0 ? intersectionBC.join(", ") : "") + "}</p>";
+    intersectionBCResult.style.color = "black";
+
+    var intersectionAllResult = document.getElementById("intersectionAll").querySelector(".result");
+    intersectionAllResult.innerHTML = "<p>A ∩ B ∩ C = {" + (intersectionAll.length > 0 ? intersectionAll.join(", ") : "") + "}</p>";
+    intersectionAllResult.style.color = "black";
+
+    var differenceABResult = document.getElementById("differenceAB").querySelector(".result");
+    differenceABResult.innerHTML = "<p>A - B = {" + differenceAB.join(", ") + "}</p>";
+    differenceABResult.style.color = "black";
+
+    var differenceACResult = document.getElementById("differenceAC").querySelector(".result");
+    differenceACResult.innerHTML = "<p>A - C = {" + differenceAC.join(", ") + "}</p>";
+    differenceACResult.style.color = "black";
+
+    var differenceBCResult = document.getElementById("differenceBC").querySelector(".result");
+    differenceBCResult.innerHTML = "<p>B - C = {" + differenceBC.join(", ") + "}</p>";
+    differenceBCResult.style.color = "black";
+
+    var differenceBAResult = document.getElementById("differenceBA").querySelector(".result");
+    differenceBAResult.innerHTML = "<p>B - A = {" + differenceBA.join(", ") + "}</p>";
+    differenceBAResult.style.color = "black";
+
+    var differenceCAResult = document.getElementById("differenceCA").querySelector(".result");
+    differenceCAResult.innerHTML = "<p>C - A = {" + differenceCA.join(", ") + "}</p>";
+    differenceCAResult.style.color = "black";
+
+    var differenceCBResult = document.getElementById("differenceCB").querySelector(".result");
+    differenceCBResult.innerHTML = "<p>C - B = {" + differenceCB.join(", ") + "}</p>";
+    differenceCBResult.style.color = "black";
+
+    var complementAResult = document.getElementById("complementA").querySelector(".result");
+    complementAResult.innerHTML = "<p>A' = {" + (complementA.length > 0 ? complementA.join(", ") : "") + "}</p>";
+    complementAResult.style.color = "black";
+
+    var complementBResult = document.getElementById("complementB").querySelector(".result");
+    complementBResult.innerHTML = "<p>B' = {" + (complementB.length > 0 ? complementB.join(", ") : "") + "}</p>";
+    complementBResult.style.color = "black";
+
+    var complementCResult = document.getElementById("complementC").querySelector(".result");
+    complementCResult.innerHTML = "<p>C' = {" + (complementC.length > 0 ? complementC.join(", ") : "") + "}</p>";
+    complementCResult.style.color = "black";
+
+    
+ var vennNumbers = {
+  circle1: setA.filter(value => !setB.includes(value) && !setC.includes(value)),
+  circle2: setB.filter(value => !setA.includes(value) && !setC.includes(value)),
+  circle3: setC.filter(value => !setA.includes(value) && !setB.includes(value)),
+  intAB: setA.filter(value => setB.includes(value) && !setC.includes(value)),
+  intAC: setA.filter(value => !setB.includes(value) && setC.includes(value)),
+  intBC: setB.filter(value => !setA.includes(value) && setC.includes(value)),
+  intABC: setA.filter(value => setB.includes(value) && setC.includes(value))
+};
+
+var vennNumbers = {
+  circle1: setA.filter(value => !setB.includes(value) && !setC.includes(value)),
+  circle2: setB.filter(value => !setA.includes(value) && !setC.includes(value)),
+  circle3: setC.filter(value => !setA.includes(value) && !setB.includes(value)),
+  intAB: setA.filter(value => setB.includes(value) && !setC.includes(value)),
+  intAC: setA.filter(value => !setB.includes(value) && setC.includes(value)),
+  intBC: setB.filter(value => !setA.includes(value) && setC.includes(value)),
+  intABC: setA.filter(value => setB.includes(value) && setC.includes(value))
+};
+
+var vennDiagram = document.getElementById("vennDiagram");
+for (var element in vennNumbers) {
+  var vennElement = vennDiagram.querySelector("." + element);
+  var numbersHtml = vennNumbers[element]
+    .map((number, index) => {
+      var leftOffset = 0;
+      var topOffset = 0;
+
+      // Adjust the positions based on the element
+      if (element === "circle1") {
+        leftOffset = 40;
+        topOffset = 40 + index * 20;
+      } else if (element === "circle2") {
+        leftOffset = 130;
+        topOffset = 40 + index * 20;
+      } else if (element === "circle3") {
+        leftOffset = 80;
+        topOffset = 130 + index * 20;
+      } else if (element === "intAB") {
+        leftOffset = 260;
+        topOffset = 125 + index * 20;
+      } else if (element === "intAC") {
+        leftOffset = 180;
+        topOffset = 250 + index * 20;
+      } else if (element === "intBC") {
+        leftOffset = 330;
+        topOffset = 230 + index * 20;
+      } else if (element === "intABC") {
+        leftOffset = 270;
+        topOffset = 210 + index * 20;
+      }
+
+      return `<p class='position-adjust' style='left: ${leftOffset}px; top: ${topOffset}px'>${number}</p>`;
+    })
+    .join("");
+  
+  vennElement.innerHTML = numbersHtml;
+  vennElement.style.color = "white";
+}
+        }
+
+
+        function showAlert(message) {
+        var alertBox = document.createElement("div");
+        alertBox.classList.add("custom-alert");
+
+        var messageElement = document.createElement("span");
+        messageElement.innerHTML = message;
+        messageElement.style.color = "white";
+        messageElement.style.fontWeight = "bold";
+        alertBox.appendChild(messageElement);
+
+        var closeButton = document.createElement("span");
+        closeButton.classList.add("close-button");
+        closeButton.innerHTML = '<span class="close-icon">&#215;</span>';
+        alertBox.appendChild(closeButton);
+
+        document.body.appendChild(alertBox);
+
+        var backdrop = document.createElement("div");
+        backdrop.classList.add("backdrop");
+        document.body.appendChild(backdrop);
+
+        closeButton.addEventListener("click", function() {
+            document.body.removeChild(alertBox);
+            document.body.removeChild(backdrop);
+        });
+    }
+
+    function resetFields() {
+  document.getElementById("setA").value = "";
+  document.getElementById("setB").value = "";
+  document.getElementById("setC").value = "";
+  document.getElementById("union").querySelector(".result").innerHTML = "";
+  document.getElementById("intersectionAB").querySelector(".result").innerHTML = "";
+  document.getElementById("intersectionAC").querySelector(".result").innerHTML = "";
+  document.getElementById("intersectionBC").querySelector(".result").innerHTML = "";
+  document.getElementById("intersectionAll").querySelector(".result").innerHTML = "";
+  document.getElementById("differenceAB").querySelector(".result").innerHTML = "";
+  document.getElementById("differenceAC").querySelector(".result").innerHTML = "";
+  document.getElementById("differenceBC").querySelector(".result").innerHTML = "";
+  document.getElementById("differenceBA").querySelector(".result").innerHTML = "";
+  document.getElementById("differenceCA").querySelector(".result").innerHTML = "";
+  document.getElementById("differenceCB").querySelector(".result").innerHTML = "";
+  document.getElementById("complementA").querySelector(".result").innerHTML = "";
+  document.getElementById("complementB").querySelector(".result").innerHTML = "";
+  document.getElementById("complementC").querySelector(".result").innerHTML = "";
+
+  // Remove the numbers in the Venn diagram
+  var circleLabels = document.querySelectorAll(".circle1, .circle2, .circle3, .intAB, .intAC, .intBC, .intABC");
+  circleLabels.forEach(function(label) {
+    label.innerHTML = "";
+  });
+}
+
+
+    </script>
+</body>
+</html>

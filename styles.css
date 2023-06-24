@@ -1,0 +1,169 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.setA {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #396C34;
+  
+}
+
+.setB {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1b6535;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.setA a,
+.setB a {
+  background: #9EBA6D;
+  width: 150px;
+  height: 50px;
+  border-radius: 15px;
+  color: #104422;
+  border: none;
+  margin-top: 30px;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.setA img,
+.setB img {
+  max-width: 100%;
+  max-height: 350px;
+  height: auto;
+  margin-top: -30px;
+}
+
+.setA img{
+  margin-top: 30px;
+}
+
+.setB a{
+  margin-bottom: 70px;
+}
+
+
+
+
+
+
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.circles-container {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 20px;
+  margin-left: -450px;
+}
+
+.circles-container .circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 25px;
+}
+
+.circle-color1 {
+  background-color: #cbd18f;
+}
+
+.circle-color2 {
+  background-color: #e3b448;
+}
+
+.circle-color3 {
+  background-color: #cbd18f;
+}
+.circles-setB {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+  
+.circles-setB .circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 25px;
+}
+  
+.circle-color1 {
+  background-color: #cbd18f;
+}
+  
+.circle-color2 {
+  background-color: #e3b448;
+}
+  
+.circle-color3 {
+  background-color: #cbd18f;
+} 
+
+.venn-link {
+  display: inline-block;
+  background-color: #9EBA6D;
+  padding-top: 10px;
+  border-radius: 15px;
+  text-decoration: none;
+  transition: transform 0.3s;
+  font-weight: bold;
+  color: #104422;
+}
+.venn-link:hover {
+  transform: scale(1.1);
+}
+
+
+  
+
+  
+  
+
+
+  
+ 
+
+
+  
+  
+  
+
+  
+  
+
+

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VennVenture</title>
+    <link rel="icon" href="tablogo.png">
+    <style>
+      body {
+        background-color: #1b6535;
+        background-size: cover;
+        color: white;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow-y: hidden;
+        overflow-x: hidden;
+      }
+
+      #header {
+        background-color: transparent;
+        padding: 20px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      
+      
+
+      #corner-text {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 24px;
+        font-weight: bold;
+      }
+      @keyframes glow {
+        0% {
+          text-shadow: none;
+        }
+        50% {
+          text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+        }
+        100% {
+          text-shadow: none;
+        }
+      }
+
+      #corner-text {
+        animation: glow 4s infinite;
+        margin-top: 10px;
+        margin-left: 20px;
+        font-size: 25px;
+      }
+
+      #content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin-top: -570px;
+      }
+
+      #welcome {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 20px;
+        margin-top: -130px;
+        margin-left: 50px;
+      }
+
+      .maintext{
+        margin-left: 50px;
+        font-size: 40px;
+        color: #DAA94A;
+        margin-top: -70px;
+        
+      }
+
+      .welcome-text {
+        font-size: 36px;
+        opacity: 0;
+        animation: fade-in 1s forwards;
+        margin-top: 100px;
+        margin-left: -195px;
+        color: #D7D372;
+      }
+
+      @keyframes fade-in {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      #typed-text {
+        display: inline-block;
+        animation: typing 2s steps(40), blink-caret 0.75s step-end infinite;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+      }
+
+      @keyframes blink-caret {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: white;
+        }
+      }
+
+      .description {
+        font-size: 20px;
+        margin-top: -65px;
+        margin-left: 60px;
+        margin-right: auto;
+        max-width: 600px;
+      }
+
+      img {
+        max-height: 400px;
+        margin-left: auto;
+        margin-right: 200px;
+        animation: circle-bounce 1s infinite;
+        backface-visibility: hidden;
+      }
+
+      img:hover {
+        animation: circle-spin 5s infinite;
+      }
+
+      @keyframes circle-bounce {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes circle-spin {
+        0% {
+          transform: rotate(0);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .start-button {
+        margin-top: 5px;
+        align-self: flex-start;
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: #C1C684;
+        color: #104422;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        margin-left: 60px;
+        font-weight: bold;
+        transform: 0.3s;
+      }
+
+      .start-button:hover {
+        background-color: #e3b448;
+      }
+
+      .circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 10px;
+      }
+
+      .red {
+        background-color: #D7D372;
+      }
+
+      .green {
+        background-color: #DAA94A;
+      }
+
+      .blue {
+        background-color: #C1C684;
+      }
+
+      .circle-container{
+        margin-left: 1050px;
+        padding-top: 20px;
+      }
+
+      .circle1 {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 10px;
+      }
+
+      .red1 {
+        background-color: #D7D372;
+      }
+
+      .green1 {
+        background-color: #DAA94A;
+      }
+
+      .blue1 {
+        background-color: #C1C684;
+      }
+
+     .circle-container1{
+      margin-left: 25px;
+      margin-top: 440px;
+     }
+      
+
+
+    </style>
+  </head>
+
+  <body>
+    <div class="circle-container">
+    <div class="circle red"></div>
+    <div class="circle green"></div>
+    <div class="circle blue"></div>
+  </div>
+
+  
+  <div class="circle-container1">
+    <div class="circle1 red1"></div>
+    <div class="circle1 green1"></div>
+    <div class="circle1 blue1"></div>
+  </div>
+
+    <div id="header">
+      <span id="corner-text">VennVenture</span>
+    </div>
+    <div id="content">
+      <div id="welcome">
+        <h1 class="welcome-text">
+          <span id="typed-text"></span><span id="blink-bar">|</span>
+        </h1>
+        <div class="maintext">
+          <h1>VennVenture</h1>
+        </div>
+        <p class="description">
+          <br>Discover our website's interactive 2-set 
+          <br>and 3-set Venn diagrams! Visualize relationships 
+          <br>between different categories and explore the shared 
+          <br>and unique elements. Try it now to uncover intriguing 
+          <br>connections and gain valuable insights.
+        </p>
+        <a href="landingpage.html" class="start-button">Start Here</a>
+      </div>
+      <img src="cc.png" alt="Image">
+    </div>
+
+
+
+    <script>
+      const welcomeTexts = ["Welcome to", "Let's Explore"];
+      const typedTextElement = document.getElementById("typed-text");
+      const blinkBar = document.getElementById("blink-bar");
+
+      let currentTextIndex = 0;
+      let currentText = "";
+      let isTyping = false;
+
+      function typeText() {
+        let currentIndex = 0;
+        const text = welcomeTexts[currentTextIndex];
+
+        function typeCharacter() {
+          if (currentIndex < text.length) {
+            const currentCharacter = text.charAt(currentIndex);
+            typedTextElement.textContent += currentCharacter;
+            currentIndex++;
+            setTimeout(typeCharacter, 100);
+          } else {
+            isTyping = false;
+            setTimeout(eraseText, 1000);
+          }
+        }
+
+        typeCharacter();
+      }
+
+      function eraseText() {
+        const typedText = typedTextElement.textContent;
+        let currentIndex = typedText.length - 1;
+
+        function eraseCharacter() {
+          if (currentIndex >= 0) {
+            typedTextElement.textContent = typedText.slice(0, currentIndex);
+            currentIndex--;
+            setTimeout(eraseCharacter, 100);
+          } else {
+            typedTextElement.textContent = "";
+            currentTextIndex++;
+            if (currentTextIndex >= welcomeTexts.length) {
+              currentTextIndex = 0;
+            }
+            setTimeout(typeText, 1000);
+          }
+        }
+
+        eraseCharacter();
+      }
+
+      function animateText() {
+        if (!isTyping) {
+          isTyping = true;
+          typeText();
+        }
+      }
+
+      animateText();
+
+      const fontSize = getComputedStyle(typedTextElement).fontSize;
+      blinkBar.style.fontSize = fontSize;
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const learnMoreButton = document.querySelector(".hover-button");
+        learnMoreButton.addEventListener("click", function () {
+          window.location.href = learnMoreButton.getAttribute("href");
+        });
+      });
+    </script>
+  </body>
+</html>
